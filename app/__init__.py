@@ -58,6 +58,24 @@ def show_help():
     return render_template("pages/help.jinja")
 
 
+
+#-----------------------------------------------------------
+#new creature form
+#-----------------------------------------------------------
+@app.get("/creature/new")
+def show_creature_form():
+    return render_template("pages/creature_form.jinja")
+
+
+#-----------------------------------------------------------
+#handle creature form data
+#-----------------------------------------------------------
+@app.post("/creature/new")
+def process_creature_form():
+    print(request.form)
+
+
+
 #===========================================================
 # Configure the app
 #===========================================================
