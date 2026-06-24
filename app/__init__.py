@@ -92,6 +92,24 @@ def process_creature_form():
 
 
 
+#-----------------------------------------------------------
+#delete creature
+#-----------------------------------------------------------
+@app.get("/creature/<int:id>/delete")
+def delete_a_creature(id):
+    with connect_db() as db:
+        #delete the creature using its id
+        sql = """
+            DELETE FROM creatures
+            WHERE id=?
+        """
+        params = (id,)
+        db.execute(sql, params)
+
+        #back to the list
+        flash("creature deleted", "success")
+        return redirect("/creatures")
+
 #===========================================================
 # Configure the app
 #===========================================================
